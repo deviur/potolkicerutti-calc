@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Alert from 'react-bootstrap/lib/Alert';
 import Table from 'react-bootstrap/lib/Table';
 
-var itog;
-
 class Tablo extends Component {
   
+  static propTypes = {
+    alert: PropTypes.string,
+    itog: PropTypes.number.isRequired,    
+    skidka_p: PropTypes.number,
+    skidka_r: PropTypes.number,
+    pribil: PropTypes.number,
+  };
+  
   toggleState() {
-    console.log('this');
+    console.log(this.props.itog);
   }
-
 
   render() {
     
@@ -24,10 +29,11 @@ class Tablo extends Component {
       </tr>
     </thead>);
     
+    
     return (
       <Alert bsStyle={this.props.alert?'danger':'info'}>
         <Table condensed >
-           {this.props.alert? alert:""}
+           {this.props.alert? alert:null}
           <tbody>
             <tr>
               <td id='itog' width='25%' onClick={this.toggleState.bind(this)}>{itog}</td>
